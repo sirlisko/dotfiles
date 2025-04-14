@@ -45,6 +45,7 @@ alias gpl="git pull"
 alias gplf='git reset --hard origin/`git rev-parse --abbrev-ref HEAD`'
 alias gclean="git branch --merged | grep -Ev 'main$|^\*.*$' | xargs git branch -d"
 alias gbclean="git removed-branches --prune -f"
+alias lg=lazygit
 
 # npm
 alias ni="npm install"
