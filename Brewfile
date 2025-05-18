@@ -1,6 +1,7 @@
 tap 'homebrew/bundle'
 
 brew 'ack' # grep-like tool
+brew 'ag' # grep alternative
 brew 'awscli' # AWS CLI
 brew 'bat' # cat(1) with wings
 brew 'cloudflared' # Cloudflare Tunnel
@@ -11,6 +12,7 @@ brew 'git' # Git CLI
 brew 'grip' # Git Readme Instant Preview
 brew 'httpie' # HTTPie
 brew 'hub' # GitHub CLI
+brew 'imagemagick' # Image processing
 brew 'jq' # Command-line JSON processor
 brew 'lazygit' # Git client
 brew 'mcfly' # An upgraded ctrl-r
@@ -20,8 +22,9 @@ brew 'pnpm' # Alternative to npm
 brew 'starship' # CLI tool for managing your projects
 brew 'thefuck'# Correct your previous command
 brew 'the_silver_searcher' # grep alternative
-brew 'tldr' # man page alternative
+brew 'tlrc' # man page alternative
 brew 'trash' # rm enancher
+brew 'tree' # tree command
 brew 'webp' # image optimization
 brew 'yt-dlp' # YouTube downloader
 brew 'zsh-syntax-highlighting'
@@ -32,7 +35,6 @@ cask '1password-cli@beta'# 1password cli
 cask 'android-file-transfer' # Android File Transfer
 cask 'apparency' # inspect other Apps installed
 cask 'appcleaner' # uninstall apps
-cask 'arc' # web browser
 cask 'brave-browser' # web browser
 cask 'bruno' # API tester
 cask 'cursor' # code editor
@@ -65,8 +67,10 @@ cask 'vlc' # video player
 cask 'whatsapp' # chat
 cask 'zen-browser' # web browser
 
+cask 'betterzip' # zip manager
+cask 'jordanbaird-ice' # OSX menu bar manager
+
 # QuickLook plugins
-cask 'betterzip'
 cask 'qlcolorcode'
 cask 'qlmarkdown'
 cask 'qlprettypatch'
