@@ -13,7 +13,6 @@ symlinks:
 brew:
 	brew update
 	brew upgrade
-	brew tap Homebrew/bundle
 	brew bundle
 	brew cleanup
 

@@ -1,5 +1,3 @@
-tap 'homebrew/bundle'
-
 brew 'ack' # grep-like tool
 brew 'ag' # grep alternative
 brew 'awscli' # AWS CLI
