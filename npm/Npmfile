@@ -2,9 +2,10 @@ update
 
 install apollo
 install babel-cli
-install create-react-app
 install electron-pdf
 install fkill-cli
+install git-branch-switcher
+install git-removed-branches
 install json
 install live-server
 install nodemon
@@ -13,8 +14,6 @@ install npm-check-updates
 install npkill
 install opn-cli
 install pa11y
-install parcel-bundler
 install serve
 install svgo
 install typescript
-install yarn
