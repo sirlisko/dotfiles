@@ -22,7 +22,7 @@ node: brew
 	npmundler install -g $(DIR)/npm/Npmfile
 
 osx:
-	sh osx.sh
+	sh osx/osx.sh
 
 server:
 	@ln -sf $(DIR)/git/gitconfig ~/.gitconfig
