@@ -15,8 +15,8 @@
 [color]
 	ui = auto
 [core]
-	excludesfile = /Users/luca/.gitignore
 	ignorecase = false
+	excludesfile = ~/.gitignore
 [fetch]
 	prune = true
 [push]

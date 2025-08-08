@@ -1,0 +1,12 @@
+convert_to_webp() {
+  setopt null_glob  # prevent 'no matches found' errors
+  for ext in jpg jpeg png; do
+    for f in *.$ext; do
+      [ -e "$f" ] || continue
+      output="${f%.*}.webp"
+      magick "$f" -quality 80 -define webp:method=6 "$output"
+      echo "Converted: $f -> $output"
+    done
+  done
+  unsetopt null_glob  # clean up after ourselves
+}

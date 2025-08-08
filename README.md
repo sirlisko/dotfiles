@@ -4,9 +4,10 @@
 
 - **Brewfile**: list of applications installed via [Homebrew](http://brew.sh/) and [Homebrew Cask](https://caskroom.github.io/).
 - **Git**: global .gitconfig and .gitignore
-- **Zsh**: generic configuration and aliases (optional apikeys and functions)
+- **Zsh**: generic configuration, aliases, and custom functions
 - **Node/Npm**: list of global modules and last stable `nodeJS` version
-- **OSX**: some common OSX configurations
+- **OSX**: some common OSX configurations and Automator workflows
+- **Configs**: application-specific configurations (iTerm2, Raycast)
 
 ## Install
 
@@ -17,8 +18,11 @@ git clone https://github.com/sirLisko/dotfiles.git
 # install oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# install brew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# install homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# install nvm (required for node management)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 
 cd dotfiles
 make
@@ -26,7 +30,15 @@ make
 
 ---
 
-## Update
+## Available Commands
+
+### Initial Setup
+
+```bash
+make        # Install symlinks and brew packages (excludes node and osx by default)
+```
+
+### Update
 
 Update all the apps installed via `brew` and all the global `npm` modules
 
@@ -34,15 +46,40 @@ Update all the apps installed via `brew` and all the global `npm` modules
 make update
 ```
 
+### Individual Components
+
+```bash
+make symlinks   # Create symbolic links for config files
+make brew      # Update and install brew packages
+make node      # Install stable Node.js and global npm packages
+make osx       # Apply macOS system configurations
+make server    # Minimal setup for server environments
+```
+
+## Configuration Files
+
+The `configs/` directory contains application-specific configurations that can be imported:
+
+- **iTerm2**: `configs/iterm.json` - Color schemes, key mappings, and terminal preferences
+- **Raycast**: `configs/Raycast.rayconfig` - Extensions, hotkeys, and settings backup
+
+To import these configurations, follow the respective application's import procedures.
+
+---
+
 Inspired by [https://dotfiles.github.io/](https://dotfiles.github.io/).
 
-## On Server
+## Server Installation
+
+For minimal server setups without GUI applications:
 
 ```bash
 make server
 ```
 
-### Note
+This creates symlinks for git config and uses the server-specific zsh configuration.
+
+### Prerequisites
 
 You need to install `nvm` [more info](https://github.com/nvm-sh/nvm#installing-and-updating)
 
