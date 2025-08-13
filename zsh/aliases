@@ -102,3 +102,5 @@ alias srcz="source ~/.zshrc"
 
 # SUBSTITUTE VIM
 # :6,10s/foo/bar/g
+
+alias code=windsurf

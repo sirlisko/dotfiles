@@ -7,6 +7,7 @@
 - **Zsh**: generic configuration, aliases, and custom functions
 - **Node/Npm**: list of global modules and last stable `nodeJS` version
 - **OSX**: some common OSX configurations and Automator workflows
+- **Scripts**: utility scripts for system setup and configuration
 - **Configs**: application-specific configurations (iTerm2, Raycast)
 
 ## Install
@@ -64,6 +65,12 @@ The `configs/` directory contains application-specific configurations that can b
 - **Raycast**: `configs/Raycast.rayconfig` - Extensions, hotkeys, and settings backup
 
 To import these configurations, follow the respective application's import procedures.
+
+## Utility Scripts
+
+The `scripts/` directory contains helpful utilities:
+
+- **setup-editor.sh**: Configure default file associations for your preferred editor (VSCode, Cursor, or Windsurf)
 
 ---
 

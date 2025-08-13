@@ -4,6 +4,7 @@ brew 'awscli' # AWS CLI
 brew 'bat' # cat(1) with wings
 brew 'cloudflared' # Cloudflare Tunnel
 brew 'deno' # TS and JS runtime
+brew 'duti' # file association
 brew 'fd' # find alternative
 brew 'gh' # GitHub CLI
 brew 'git' # Git CLI
