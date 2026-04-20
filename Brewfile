@@ -3,11 +3,13 @@ brew 'ag' # grep alternative
 brew 'awscli' # AWS CLI
 brew 'bat' # cat(1) with wings
 brew 'cloudflared' # Cloudflare Tunnel
+brew 'csvlens' # CSV viewer
 brew 'deno' # TS and JS runtime
 brew 'duti' # file association
 brew 'fd' # find alternative
 brew 'gh' # GitHub CLI
 brew 'git' # Git CLI
+brew 'glow' # markdown reader
 brew 'grip' # Git Readme Instant Preview
 brew 'httpie' # HTTPie
 brew 'hub' # GitHub CLI
@@ -34,22 +36,23 @@ cask '1password-cli@beta'# 1password cli
 cask 'android-file-transfer' # Android File Transfer
 cask 'apparency' # inspect other Apps installed
 cask 'appcleaner' # uninstall apps
+cask 'betterzip' # zip manager
 cask 'brave-browser' # web browser
 cask 'bruno' # API tester
 cask 'cursor' # code editor
 cask 'discord' # chat
 cask 'dropbox' # file sharing
 cask 'firefox' # web browser
-cask 'flux' # change screen brightness
+cask 'flux-app' # change screen brightness
 cask 'google-chrome' # web browser
 cask 'grammarly-desktop' # grammar checker
-cask 'handbrake' # video encoder
+cask 'handbrake-app' # video encoder
 cask 'imageoptim' # image optimization
 cask 'insomnia' # API tester
 cask 'iterm2' # terminal
+cask 'jordanbaird-ice' # OSX menu bar manager
 cask 'keepingyouawake' # wake up computer
 cask 'krisp' # noise cancelling
-cask 'macdown' # markdown editor
 cask 'openvpn-connect' # vpn connection
 cask 'raycast' # alternative to spotlight
 cask 'raindropio' # bookmark manager
@@ -58,27 +61,17 @@ cask 'slack' # chat
 cask 'sloth' # process manager
 cask 'sourcetree'# git client
 cask 'spotify' # music
-cask 'todoist' # todo list
+cask 'todoist-app' # todo list
 cask 'transmission' # torrent client
 cask 'transnomino' # rename files
 cask 'visual-studio-code' # code editor
 cask 'vlc' # video player
 cask 'whatsapp' # chat
-cask 'zen-browser' # web browser
-
-cask 'betterzip' # zip manager
-cask 'jordanbaird-ice' # OSX menu bar manager
+cask 'zen' # web browser
 
 # QuickLook plugins
-cask 'qlcolorcode'
 cask 'qlmarkdown'
-cask 'qlprettypatch'
-cask 'qlstephen'
-cask 'qlvideo'
-cask 'quicklook-csv'
-cask 'quicklook-json'
-cask 'quicklookase'
-cask 'webpquicklook'
+cask 'quicklook-video'
 
 # Custom font
 cask 'font-fira-code-nerd-font'
