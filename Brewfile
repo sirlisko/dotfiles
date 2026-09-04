@@ -9,6 +9,7 @@ brew 'duti' # file association
 brew 'fd' # find alternative
 brew 'gh' # GitHub CLI
 brew 'git' # Git CLI
+brew 'gitleaks' # secret scanner used by the pre-commit hook
 brew 'glow' # markdown reader
 brew 'grip' # Git Readme Instant Preview
 brew 'httpie' # HTTPie

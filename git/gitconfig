@@ -17,6 +17,7 @@
 [core]
 	ignorecase = false
 	excludesfile = ~/.gitignore
+	hooksPath = ~/dotfiles/git/hooks
 [fetch]
 	prune = true
 [push]
@@ -29,3 +30,15 @@
 	ff = only
 [init]
 	defaultBranch = main
+[rerere]
+	enabled = true
+	autoUpdate = true
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[help]
+	autocorrect = prompt
+[gpg]
+	format = ssh
