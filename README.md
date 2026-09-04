@@ -36,7 +36,7 @@ make
 ### Initial Setup
 
 ```bash
-make        # Install symlinks and brew packages (excludes node and osx by default)
+make        # Install symlinks, brew packages, node, and macOS defaults (runs all of the below)
 ```
 
 ### Update
