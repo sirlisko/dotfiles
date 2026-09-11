@@ -17,6 +17,13 @@ setopt hist_ignore_space
 
 eval "$(thefuck --alias)"
 
+export THEFUCK_PRIORITY="git_hook_bypass=1100"
+
+eval "$(fzf --zsh)"
+eval "$(zoxide init zsh)"
+eval "$(direnv hook zsh)"
+
+# mcfly is initialized after fzf so its ctrl-r binding wins over fzf's
 eval "$(mcfly init zsh)"
 
 for file in $HOME/dotfiles/zsh/{aliases,apikeys,functions}; do

@@ -1,14 +1,17 @@
-brew 'ack' # grep-like tool
-brew 'ag' # grep alternative
 brew 'awscli' # AWS CLI
 brew 'bat' # cat(1) with wings
 brew 'cloudflared' # Cloudflare Tunnel
 brew 'csvlens' # CSV viewer
 brew 'deno' # TS and JS runtime
+brew 'direnv' # per-directory env vars
 brew 'duti' # file association
+brew 'eza' # ls alternative
 brew 'fd' # find alternative
+brew 'fzf' # fuzzy finder
 brew 'gh' # GitHub CLI
 brew 'git' # Git CLI
+brew 'git-delta' # syntax-highlighted git diff pager
+brew 'git-lfs' # large file storage, used by the lfs filter in gitconfig
 brew 'gitleaks' # secret scanner used by the pre-commit hook
 brew 'glow' # markdown reader
 brew 'grip' # Git Readme Instant Preview
@@ -21,14 +24,15 @@ brew 'mcfly' # An upgraded ctrl-r
 brew 'nvm' # Node Version Manager
 brew 'openssl' # OpenSSL
 brew 'pnpm' # Alternative to npm
+brew 'ripgrep' # grep alternative
 brew 'starship' # CLI tool for managing your projects
 brew 'thefuck'# Correct your previous command
-brew 'the_silver_searcher' # grep alternative
 brew 'tlrc' # man page alternative
 brew 'trash' # rm enancher
 brew 'tree' # tree command
 brew 'webp' # image optimization
 brew 'yt-dlp' # YouTube downloader
+brew 'zoxide' # smarter cd
 brew 'zsh-syntax-highlighting'
 brew 'zsh-autosuggestions'
 

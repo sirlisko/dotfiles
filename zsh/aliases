@@ -1,7 +1,6 @@
 # Shortcuts
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias p="cd ~/projects"
 alias rm="trash"
 
 # git
@@ -95,6 +94,9 @@ alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[
 
 # command improved
 alias cat="bat"
+alias ls="eza --icons"
+alias ll="eza -la --icons --git"
+alias lt="eza --tree --icons --level=2"
 
 # various
 alias h="less ~/dotfiles/zsh/aliases"
