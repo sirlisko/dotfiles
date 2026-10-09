@@ -44,6 +44,7 @@ make symlinks  # link zshrc and gitignore, include the shared gitconfig
 make brew      # install and upgrade Homebrew packages
 make node      # install stable Node.js and global npm packages
 make osx       # apply macOS defaults
+make obsidian-sync  # install the obsidian-sync launchd job
 make server    # minimal setup for servers (git + server zshrc)
 ```
 
@@ -58,6 +59,7 @@ Nothing personal is committed. Keep it in these files instead:
 ## Scripts
 
 - `scripts/setup-editor.sh {vscode|cursor|windsurf}`: make an editor the default app for common dev file types (needs `duti`)
+- `scripts/obsidian-sync`: two-way sync between folders in git repos and an iCloud Obsidian vault, using [Unison](https://github.com/bcpierce00/unison) and a launchd job that runs every minute. `obsidian-sync add blog ~/dev/blog/src/content/posts Blog` adds a pair, `obsidian-sync status` shows the job, conflicts and errors. The vault defaults to `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Vault`; override it with `OBSIDIAN_VAULT`
 
 ## Extras
 

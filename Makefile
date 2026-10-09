@@ -1,6 +1,6 @@
 DIR=~/dotfiles
 
-.PHONY: all update symlinks gitconfig brew node osx server
+.PHONY: all update symlinks gitconfig brew node osx obsidian-sync server
 
 all: symlinks brew node osx
 
@@ -30,6 +30,11 @@ node: brew
 
 osx:
 	sh osx/osx.sh
+
+obsidian-sync:
+	@mkdir -p ~/.local/bin
+	@ln -sf $(DIR)/scripts/obsidian-sync ~/.local/bin/obsidian-sync
+	~/.local/bin/obsidian-sync install
 
 server: gitconfig
 	@ln -sf $(DIR)/git/gitignore ~/.gitignore

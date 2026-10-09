@@ -29,6 +29,7 @@ brew 'thefuck' # Correct your previous command
 brew 'tlrc' # man page alternative
 brew 'trash' # move to Trash instead of rm
 brew 'tree' # tree command
+brew 'unison' # two-way file sync
 brew 'webp' # image optimization
 brew 'yt-dlp' # YouTube downloader
 brew 'zoxide' # smarter cd
