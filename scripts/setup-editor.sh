@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Replace this with your verified editor bundle ID
+# Bundle IDs: osascript -e 'id of app "<App Name>"'
 CURSOR_ID="com.todesktop.230313mzl4w4u92"
 VSCODE_ID="com.microsoft.VSCode"
 WINDSURF_ID="com.exafunction.windsurf"

@@ -2,6 +2,7 @@
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias rm="trash"
+alias o="open ."
 
 # git
 alias s="git status"
@@ -11,7 +12,6 @@ alias co="git checkout"
 alias a="git add"
 alias ca="git add . && git commit -m"
 alias review='git difftool `git merge-base HEAD develop`'
-alias git=hub
 alias ga="git add"
 alias gaa="git aa"
 alias gaap="gaa && gca && gpuf"
@@ -80,12 +80,16 @@ alias pug="pnpm uninstall -g"
 # lifesafer
 alias brwe=brew
 
+# editor
+alias code="devin-desktop"
+
 # OSX
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
 alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 # Starts ios simulator
 alias ios="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
+alias icloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -104,5 +108,3 @@ alias srcz="source ~/.zshrc"
 
 # SUBSTITUTE VIM
 # :6,10s/foo/bar/g
-
-alias code=windsurf

@@ -1,14 +1,21 @@
 DIR=~/dotfiles
 
+.PHONY: all update symlinks gitconfig brew node osx server
+
 all: symlinks brew node osx
 
 update: brew node
 
-symlinks:
-	@ln -sf $(DIR)/git/gitconfig ~/.gitconfig
+symlinks: gitconfig
 	@ln -sf $(DIR)/git/gitignore ~/.gitignore
 	@ln -sf $(DIR)/zsh/zshrc ~/.zshrc
-	@ln -sf $(DIR)/npm/npmrc ~/.npmrc
+
+# ~/.gitconfig stays a local file so identity, signing and `git config --global`
+# writes never end up in the repo
+gitconfig:
+	@[ -L ~/.gitconfig ] && rm ~/.gitconfig || true
+	@git config --global --get-all include.path | grep -qxF '$(DIR)/git/gitconfig' || \
+		git config --global --add include.path '$(DIR)/git/gitconfig'
 
 brew:
 	brew update
@@ -24,6 +31,6 @@ node: brew
 osx:
 	sh osx/osx.sh
 
-server:
-	@ln -sf $(DIR)/git/gitconfig ~/.gitconfig
+server: gitconfig
+	@ln -sf $(DIR)/git/gitignore ~/.gitignore
 	@ln -sf $(DIR)/zsh/zshrc-server ~/.zshrc

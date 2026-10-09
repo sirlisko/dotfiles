@@ -31,7 +31,7 @@ alias gra="git rebase --abort"
 alias grs="git rebase --skip"
 alias gpl="git pull"
 alias gplf='git reset --hard origin/`git rev-parse --abbrev-ref HEAD`'
-alias gclean="git branch --merged | grep -Ev 'master$|^\*.*$' | xargs git branch -d"
+alias gclean="git branch --merged | grep -Ev '(main|master)$|^\*.*$' | xargs git branch -d"
 
 # npm
 alias ni="npm install"

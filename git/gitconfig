@@ -1,3 +1,5 @@
+# Shared settings, included from ~/.gitconfig.
+# Identity, signing and anything written by `git config --global` live there.
 [alias]
 	aa = add --all
 	ap = add --patch
@@ -12,6 +14,7 @@
 	rlc = reset --hard HEAD~1
 	st = status
 	ulc = reset --soft HEAD~1
+	restack = !git fetch origin && git rebase --update-refs --onto origin/main
 [color]
 	ui = auto
 [core]
@@ -34,9 +37,6 @@
 [push]
 	default = simple
 	autoSetupRemote = true
-[user]
-	name = Luca Lischetti
-	email = luca@sirlisko.com
 [pull]
 	ff = only
 [init]
@@ -51,5 +51,3 @@
 	process = git-lfs filter-process
 [help]
 	autocorrect = prompt
-[gpg]
-	format = ssh

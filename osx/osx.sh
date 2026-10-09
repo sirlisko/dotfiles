@@ -17,9 +17,6 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # General UI/UX                                                               #
 ###############################################################################
 
-# Disable the “Are you sure you want to open this application?” dialog
-defaults write com.apple.LaunchServices LSQuarantine -bool false
-
 # Restart automatically if the computer freezes
 sudo systemsetup -setrestartfreeze on
 
@@ -128,7 +125,7 @@ defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 # Kill affected applications                                                  #
 ###############################################################################
 
-for app in "Activity Monitor" "cfprefsd" "Dock" "Finder" "Safari" "Spectacle" "SystemUIServer"
+for app in "Activity Monitor" "cfprefsd" "Dock" "Finder" "Safari" "SystemUIServer"
 do
 	killall "${app}"
 done
