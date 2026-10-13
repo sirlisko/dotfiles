@@ -11,6 +11,7 @@ LABEL="local.obsidian-sync"
 PLIST="$HOME/Library/LaunchAgents/$LABEL.plist"
 LOG="$HOME/Library/Logs/obsidian-sync.log"
 ERR_LOG="$HOME/Library/Logs/obsidian-sync.err.log"
+LAST_RUN="$HOME/Library/Logs/obsidian-sync.last-run"
 SELF="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)/$(basename "$0")"
 
 usage() {
@@ -49,10 +50,6 @@ roots() {
   sed -n 's/^root = //p' "$1"
 }
 
-relative_files() {
-  (cd "$1" && find . -type f ! -name .DS_Store | sort)
-}
-
 cmd_add() {
   [ $# -eq 3 ] || die "usage: add <name> <repo-dir> <vault-subfolder>"
   local name="$1" repo vault_dir="$VAULT/$3"
@@ -65,28 +62,6 @@ cmd_add() {
   [ -f "$UNISON_DIR/common.prf" ] || die "missing $UNISON_DIR/common.prf (run: $(basename "$0") install)"
   repo="$(cd "$2" && pwd)"
   mkdir -p "$vault_dir"
-
-  # Evicted iCloud files look missing to Unison, which would then delete them
-  # from the repo
-  if [ -n "$(find "$vault_dir" -name '*.icloud' -print -quit)" ]; then
-    die "some files in $vault_dir are not downloaded. In Finder, right-click it, pick Keep Downloaded, and try again"
-  fi
-
-  # Without an archive, the first sync treats every file present on one side
-  # only as new, so deleted files come back
-  local only_repo only_vault
-  only_repo="$(comm -23 <(relative_files "$repo") <(relative_files "$vault_dir"))"
-  only_vault="$(comm -13 <(relative_files "$repo") <(relative_files "$vault_dir"))"
-  if [ -n "$(ls -A "$vault_dir" | grep -v '^.DS_Store$' || true)" ] &&
-    [ -n "$(ls -A "$repo" | grep -v '^.DS_Store$' || true)" ] &&
-    [ -n "$only_repo$only_vault" ]; then
-    echo "Both sides have files, and these exist on one side only."
-    echo "The first sync will copy them to the other side:"
-    [ -n "$only_repo" ] && echo "  repo only:" && echo "$only_repo" | sed 's/^\.\//    /'
-    [ -n "$only_vault" ] && echo "  vault only:" && echo "$only_vault" | sed 's/^\.\//    /'
-    read -r -p "Continue? [y/N] " answer
-    [[ "$answer" =~ ^[yY]$ ]] || die "aborted, nothing changed"
-  fi
 
   printf 'include common\nroot = %s\nroot = %s\n' "$repo" "$vault_dir" >"$profile"
   echo "Created $profile"
@@ -110,17 +85,28 @@ cmd_list() {
   done < <(profiles)
 }
 
+last_sync() {
+  [ -f "$LAST_RUN" ] && echo "  last run = $(stat -f '%Sm' -t '%F %T' "$LAST_RUN")"
+  [ -s "$LOG" ] && echo "  last change = $(grep '^[0-9]' "$LOG" | tail -1)"
+  return 0
+}
+
 cmd_status() {
   echo "== Job"
-  launchctl print "gui/$(id -u)/$LABEL" 2>/dev/null |
-    grep -E '^\t(state|runs|last exit code) =' ||
+  local job
+  if job="$(launchctl print "gui/$(id -u)/$LABEL" 2>/dev/null)"; then
+    echo "  loaded, syncs every minute"
+    grep $'^\tlast exit code =' <<<"$job" | sed 's/^\t/  /' || true
+    last_sync
+  else
     echo "  not loaded (run: $(basename "$0") install)"
+  fi
 
   echo "== Conflicts"
   local p found=0
   while read -r p; do
     [ -n "$p" ] || continue
-    if find "$(roots "$p" | head -1)" -name '*(conflict on *' | sed 's/^/  /' | grep .; then
+    if find "$(roots "$p" | head -1)" -name '*(conflict_on_*' | sed 's/^/  /' | grep .; then
       found=1
     fi
   done < <(profiles)
@@ -148,9 +134,28 @@ cmd_run() {
   local p failed=0
   while read -r p; do
     [ -n "$p" ] || continue
-    "$UNISON_BIN" "obsidian-$(profile_name "$p")" || failed=1
+    sync_pair "$(profile_name "$p")" || failed=1
   done < <(profiles)
+  touch "$LAST_RUN"
   return "$failed"
+}
+
+# Logs only runs that changed something, as a dated header and one line per
+# file. A failed run can still have transferred files, so both get logged
+sync_pair() {
+  local name="$1" out code=0
+  out="$("$UNISON_BIN" "obsidian-$name" 2>&1 >/dev/null)" || code=$?
+  if grep -q '^Synchronization complete' <<<"$out"; then
+    {
+      echo "$(date '+%F %T') $name: $(sed -n 's/^Synchronization complete at [0-9:]*  (\(.*\))$/\1/p' <<<"$out")"
+      sed -n 's/^\[END\] /  /p' <<<"$out"
+    } >>"$LOG"
+  fi
+  if [ "$code" -ne 0 ]; then
+    echo "$(date '+%F %T') $name: unison exited with $code" >&2
+    echo "$out" >&2
+  fi
+  return "$code"
 }
 
 write_common() {
@@ -165,9 +170,6 @@ perms = 0
 prefer = newer
 copyonconflict = true
 confirmbigdel = true
-silent = true
-log = true
-logfile = $LOG
 EOF
 }
 
