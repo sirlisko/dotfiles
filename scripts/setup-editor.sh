@@ -57,12 +57,11 @@ EXTENSIONS=(
   ".swift" ".dart"
 
   # Data/Database
-  ".sql" ".graphql" ".gql" ".r" ".R"
+  ".sql" ".graphql" ".gql" ".r"
 
   # Config files
   ".json" ".yml" ".yaml" ".toml" ".xml" ".md"
-  ".txt" ".ini" ".env" ".properties" ".conf"
-  ".gitignore" ".editorconfig" ".prettierrc"
+  ".txt" ".ini" ".properties" ".conf"
 
   # Infrastructure
   ".hcl" ".tf" ".lua"
