@@ -161,7 +161,7 @@ sync_pair() {
 write_common() {
   cat >"$UNISON_DIR/common.prf" <<EOF
 ignore = Name .DS_Store
-ignore = Name *.icloud
+ignore = Name .*.icloud
 ignore = Name .trash
 batch = true
 auto = true
